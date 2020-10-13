@@ -35,7 +35,7 @@ public class ProductController {
     public Iterable<Category> allCategory() {
         return categoryService.findAll();
     }
-git
+
     @GetMapping
     public ModelAndView showList(Optional<String> s, @PageableDefault(size = 3) Pageable pageable) {
         ModelAndView modelAndView = new ModelAndView("product/list");
