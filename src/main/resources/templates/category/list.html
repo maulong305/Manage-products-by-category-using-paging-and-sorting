@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="layout :: head">
 
 </head>
 <body>
@@ -11,11 +11,15 @@
         <th>Name</th>
         <th>Actions</th>
     </tr>
-    <th:block th:each="country : ${categories}">
+    <th:block th:each="c : ${categories}">
         <tr>
-            <td th:text="${country.getCName()}"></td>
-            <td><a th:href="@{/edit-country/__${country.getCId()}__ }"><button>Edit</button></a>
-                <a th:href="@{/delete-country/__${country.getCId()}__ }"><button>Delete</button></a>
+            <td th:text="${c.getCName()}"></td>
+            <td><a th:href="@{/edit-cate/__${c.getCId()}__ }">
+                <button>Edit</button>
+            </a>
+                <a th:href="@{/delete-cate/__${c.getCId()}__ }">
+                    <button>Delete</button>
+                </a>
             </td>
             <td></td>
         </tr>

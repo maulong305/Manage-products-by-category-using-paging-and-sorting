@@ -15,24 +15,23 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping("categories")
-    public ModelAndView listCategory(){
+    public ModelAndView listCategory() {
         Iterable<Category> categories = categoryService.findAll();
-        ModelAndView modelAndView =  new ModelAndView("category/list");
+        ModelAndView modelAndView = new ModelAndView("category/list");
         modelAndView.addObject("categories", categories);
         return modelAndView;
     }
 
     @GetMapping("/create-cate")
-    public  ModelAndView showCreateForm(){
+    public ModelAndView showCreateForm() {
         ModelAndView modelAndView = new ModelAndView("category/create");
         modelAndView.addObject("category", new Category());
         return modelAndView;
     }
 
     @PostMapping("/create-cate")
-    public ModelAndView saveCate(@ModelAttribute("category") Category category){
+    public ModelAndView saveCate(@ModelAttribute("category") Category category) {
         categoryService.save(category);
-
         ModelAndView modelAndView = new ModelAndView("category/create");
         modelAndView.addObject("category", new Category());
         modelAndView.addObject("message", "New Category created successfully");

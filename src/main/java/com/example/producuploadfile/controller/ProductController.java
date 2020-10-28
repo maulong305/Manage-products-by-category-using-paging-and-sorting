@@ -39,7 +39,7 @@ public class ProductController {
     @GetMapping
     public ModelAndView showList(Optional<String> s, @PageableDefault(size = 3) Pageable pageable) {
         ModelAndView modelAndView = new ModelAndView("product/list");
-        Page<Product> products = s.isPresent()?productService.search(s.get(), pageable):productService.findAll(pageable);
+        Page<Product> products = s.isPresent() ? productService.search(s.get(), pageable) : productService.findAll(pageable);
         modelAndView.addObject("keyword", s.orElse(null));
         modelAndView.addObject("products", products);
         return modelAndView;
@@ -84,7 +84,7 @@ public class ProductController {
     }
 
     @PostMapping("/edit")
-    public ModelAndView updateProduct(@ModelAttribute("product") Product product) {
+    public ModelAndView updateProduct(@ModelAttribute Product product) {
         if (!product.getImgFile().isEmpty()) {
             MultipartFile multipartFile = product.getImgFile();
             String img = multipartFile.getOriginalFilename();

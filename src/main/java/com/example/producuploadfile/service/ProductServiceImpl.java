@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
 
@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public Product findById(Long id) {
-        return productRepository.findById(id).get() ;
+        return productRepository.findById(id).get();
     }
 
     @Override

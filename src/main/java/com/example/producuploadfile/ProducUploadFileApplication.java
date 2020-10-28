@@ -16,29 +16,30 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @SpringBootApplication
 public class ProducUploadFileApplication extends WebMvcConfigurerAdapter {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ProducUploadFileApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ProducUploadFileApplication.class, args);
+    }
 
-	@Bean
-	public ProductService productService(){
-		return new ProductServiceImpl();
-	}
+    @Bean
+    public ProductService productService() {
+        return new ProductServiceImpl();
+    }
 
-	@Bean
-	public CategoryService categoryService(){
-		return new CategoryServiceImpl();
-	}
+    @Bean
+    public CategoryService categoryService() {
+        return new CategoryServiceImpl();
+    }
 
-	@Autowired
-	Environment environment;
+    @Autowired
+    Environment environment;
 
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
 
-		String fileUpload = environment.getProperty("file_upload").toString();
+        String fileUpload = environment.getProperty("file_upload").toString();
 
-		// Image resource9.
-		registry.addResourceHandler("/i/**") //
-				.addResourceLocations("file:" + fileUpload);
-	}
+        // Image resource9.
+        registry.addResourceHandler("/i/**") //
+                .addResourceLocations("file:" + fileUpload);
+    }
 }
